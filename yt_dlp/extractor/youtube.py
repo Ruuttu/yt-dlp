@@ -4056,6 +4056,7 @@ class YoutubeIE(YoutubeBaseInfoExtractor):
                 'language_preference': PREFERRED_LANG_VALUE if is_default else -10 if is_descriptive else -1,
                 # Strictly de-prioritize broken, damaged and 3gp formats
                 'preference': -20 if is_broken else -10 if is_damaged else -2 if itag == '17' else None,
+                'loudness': fmt.get('loudnessDb')
             }
             mime_mobj = re.match(
                 r'((?:[^/]+)/(?:[^;]+))(?:;\s*codecs="([^"]+)")?', fmt.get('mimeType') or '')
